@@ -1,0 +1,5 @@
+{
+  "name": "Prism Todo - PWA",
+  "description": "A beautiful, minimalist to-do list application with a glassmorphism UI, designed to work as a Progressive Web App (PWA) with local storage persistence.",
+  "requestFramePermissions": []
+}
