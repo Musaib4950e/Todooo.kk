@@ -40,6 +40,17 @@ const App: React.FC = () => {
     };
     setTodos(prevTodos => [newTodo, ...prevTodos]);
   }, []);
+  
+  const addMultipleTodos = useCallback((texts: string[]) => {
+    const newTodos: Todo[] = texts.reverse().map(text => ({
+      id: crypto.randomUUID(),
+      text,
+      completed: false,
+      priority: null,
+      createdAt: Date.now(),
+    }));
+    setTodos(prevTodos => [...newTodos, ...prevTodos]);
+  }, []);
 
   const setTodoPriority = useCallback((id: string, priority: Priority) => {
      setTodos(prevTodos => 
@@ -143,7 +154,7 @@ const App: React.FC = () => {
 
         <main className="space-y-4">
             <div className="bg-black/20 backdrop-blur-xl border border-white/20 rounded-2xl p-4 shadow-2xl">
-                <TodoForm onAddTodo={addTodo} />
+                <TodoForm onAddTodo={addTodo} onAddMultipleTodos={addMultipleTodos} />
             </div>
 
             {isMounted && (
